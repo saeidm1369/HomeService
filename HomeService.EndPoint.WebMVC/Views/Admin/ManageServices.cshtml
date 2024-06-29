@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "مدیریت خدمات و دسته‌بندی‌ها";
+}
+
+<h2>مدیریت خدمات و دسته‌بندی‌ها</h2>
+
+<a class="btn btn-success" asp-action="CreateService">افزودن خدمت جدید</a>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>نام خدمت</th>
+            <th>دسته‌بندی</th>
+            <th>قیمت</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model.Services)
+        {
+            <tr>
+                <td>@service.Name</td>
+                <td>@service.ServiceCategory.Name</td>
+                <td>@service.Price</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="EditService" asp-route-id="@service.Id">ویرایش</a>
+                    <a class="btn btn-danger" asp-action="DeleteService" asp-route-id="@service.Id">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>دسته‌بندی‌ها</h3>
+<a class="btn btn-success" asp-action="CreateCategory">افزودن دسته‌بندی جدید</a>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>نام دسته‌بندی</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model.ServiceCategories)
+        {
+            <tr>
+                <td>@category.Name</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="EditCategory" asp-route-id="@category.Id">ویرایش</a>
+                    <a class="btn btn-danger" asp-action="DeleteCategory" asp-route-id="@category.Id">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "مدیریت درخواست‌ها";
+}
+
+<h2>مدیریت درخواست‌ها</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>شماره درخواست</th>
+            <th>کاربر</th>
+            <th>خدمت</th>
+            <th>تاریخ درخواست</th>
+            <th>وضعیت</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model.ServiceRequests)
+        {
+            <tr>
+                <td>@request.Id</td>
+                <td>@request.User.FullName</td>
+                <td>@request.Service.Name</td>
+                <td>@request.RequestDate.ToShortDateString()</td>
+                <td>@request.ServiceRequestStatus.StatusName</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="ChangeRequestStatus" asp-route-id="@request.Id">تغییر وضعیت</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
