@@ -15,21 +15,22 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.PaymentA
         {
             builder.HasKey(id => id.Id);
             builder.Property(a => a.Amount)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("decimal(18, 2)");
             builder.Property(pd => pd.PaymentDate)
                 .IsRequired();
             builder.Property(t => t.TransactionId)
                 .IsRequired();
 
-            builder.HasOne(sr => sr.ServiceRequest)
-                .WithMany(p => p.Payments)
-                .HasForeignKey(id => id.ServiceRequestId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(p => p.ServiceRequest)
+                .WithMany(sr => sr.Payments)
+                .HasForeignKey(p => p.ServiceRequestId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(ps => ps.PaymentStatus)
-                .WithMany(p => p.Payments)
-                .HasForeignKey(id => id.PaymentStatusId)
-                .OnDelete(DeleteBehavior.Cascade); 
+            builder.HasOne(p => p.PaymentStatus)
+                .WithMany(sr => sr.Payments)
+                .HasForeignKey(p => p.PaymentStatusId)
+                .OnDelete(DeleteBehavior.Restrict); 
                            
         }
     }

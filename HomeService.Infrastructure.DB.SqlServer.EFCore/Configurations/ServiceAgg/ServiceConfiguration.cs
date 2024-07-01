@@ -22,20 +22,24 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.ServiceA
             builder.Property(s => s.Description)
                 .HasMaxLength(1000);
 
+            builder.Property(s => s.Price)
+           .IsRequired()
+           .HasColumnType("decimal(18, 2)");
+
             builder.HasOne(s => s.ServiceCategory)
                 .WithMany(s => s.Services)
                 .HasForeignKey(s => s.ServiceCategoryId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(s => s.ServiceRequests)
                 .WithOne(s => s.Service)
                 .HasForeignKey(s => s.ServiceId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(s => s.ServiceImages)
                 .WithOne(s => s.Service)
                 .HasForeignKey(s => s.ServiceId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

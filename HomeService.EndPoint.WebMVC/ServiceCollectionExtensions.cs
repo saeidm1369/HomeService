@@ -11,6 +11,7 @@ using HomeService.Infrastructure.DataAccess.Repository.EFCore.Repositories.Payme
 using HomeService.Infrastructure.DataAccess.Repository.EFCore.Repositories.ServiceAgg;
 using HomeService.Infrastructure.DataAccess.Repository.EFCore.Repositories.UserAgg;
 using HomeService.Infrastructure.DB.SqlServer.EFCore.Contexts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,14 @@ namespace HomeService.EndPoint.WebMVC
             // Add DbContext
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            // Add Identity services
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             // Add Repositories
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();

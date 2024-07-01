@@ -33,37 +33,37 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.UserAgg
             builder.HasMany(u => u.ExpertSkills)
                 .WithOne(es => es.User)
                 .HasForeignKey(es => es.ExpertId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(u => u.ServiceRequests)
                 .WithOne(u => u.User)
                 .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(u => u.ServiceSugesstions)
                 .WithOne(u => u.Expert)
                 .HasForeignKey(u => u.ExpertId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(u => u.Reviews)
                 .WithOne(u => u.User)
                 .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(u => u.ExpertReviews)
                 .WithOne(u => u.Expert)
                 .HasForeignKey(u => u.ExpertId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(u => u.Payments)
                 .WithOne(u => u.User)
                 .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(u => u.Invoices)
                 .WithOne(u => u.User)
                 .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

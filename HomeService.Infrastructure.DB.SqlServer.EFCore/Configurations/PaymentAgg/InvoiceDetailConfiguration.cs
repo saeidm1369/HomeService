@@ -19,7 +19,8 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.PaymentA
                .IsRequired()
                .HasMaxLength(500);
             builder.Property(a => a.Amount)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("decimal(18, 2)");
 
         }
     }

@@ -22,7 +22,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.ServiceA
             builder.HasMany(sc => sc.Services)
                 .WithOne(sc => sc.ServiceCategory)
                 .HasForeignKey(sc => sc.ServiceCategoryId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model HomeService.EndPoint.WebMVC.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "ورود";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    ورود به حساب کاربری
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="Email">ایمیل</label>
+                            <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="Password">رمز عبور</label>
+                            <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-check mt-3">
+                            <input type="checkbox" class="form-check-input" id="RememberMe" name="RememberMe" asp-for="RememberMe">
+                            <label class="form-check-label" for="RememberMe">مرا به خاطر بسپار</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-4">ورود</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="/Auth/Register">حساب کاربری ندارید؟ ثبت‌نام کنید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

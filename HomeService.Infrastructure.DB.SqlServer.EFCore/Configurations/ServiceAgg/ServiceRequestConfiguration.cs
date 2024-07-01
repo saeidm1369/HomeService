@@ -29,12 +29,12 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.ServiceA
             builder.HasMany(sr => sr.ServiceSugesstions)
                 .WithOne(sr => sr.ServiceRequest)
                 .HasForeignKey(sr => sr.ServiceRequestId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(sr => sr.ServiceRequestImages)
                 .WithOne(sr => sr.ServiceRequest)
                 .HasForeignKey(sr => sr.ServiceRequestId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

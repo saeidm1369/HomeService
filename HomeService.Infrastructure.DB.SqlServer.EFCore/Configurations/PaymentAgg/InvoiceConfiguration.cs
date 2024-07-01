@@ -1,11 +1,6 @@
 ﻿using HomeService.Domain.Core.PaymentAgg.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.PaymentAgg
 {
@@ -22,25 +17,24 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.PaymentA
             builder.Property(i => i.InvoiceDate)
                 .IsRequired();
 
-            builder.Property(i => i.PaymentStatus)
-                .IsRequired();
+            builder.HasOne(i => i.Payment)
+                .WithMany(p => p.Invoices)
+                .HasForeignKey(i => i.PaymentId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(i => i.PaymentStatus)
-               .WithMany(ps => ps.Invoices)
-               .HasForeignKey(i => i.PaymentStatusId)
-               .OnDelete(DeleteBehavior.Cascade);
+                .WithMany(ps => ps.Invoices)
+                .HasForeignKey(i => i.PaymentStatusId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(i => i.User)
+                .WithMany(u => u.Invoices)
+                .HasForeignKey(i => i.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(i => i.InvoiceDetails)
                 .WithOne(id => id.Invoice)
-                .HasForeignKey(id => id.InvoiceId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne(p => p.Payment)
-                .WithOne(i => i.Invoice)
-                .HasForeignKey<Invoice>(id => id.PaymentId)
-                .OnDelete(DeleteBehavior.Cascade);
-                        
-
+                .HasForeignKey(id => id.InvoiceId);
         }
     }
 }

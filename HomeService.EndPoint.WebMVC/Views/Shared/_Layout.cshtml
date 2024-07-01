@@ -1,51 +1,157 @@
 ﻿<!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title - خدمات منزل</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- اطلاعات پایه -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- متاهای موبایل -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- متاهای سایت -->
+    <title>خانه‌باز</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- CSS بوت استرپ -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- CSS استایل -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- فاویکن -->
+    <link rel="icon" href="~/images/fevicon.png" type="image/gif" />
+    <!-- CSS اسکرول بار سفارشی -->
+    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css">
+    <!-- اصلاحات برای مرورگرهای قدیمی تر-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- استایل‌های جغد -->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <style>
+        .dropdown-menu .dropdown-item {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">خدمات منزل</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/Admin/ManageRequests">مدیریت درخواست‌ها</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Admin/ManageServices">مدیریت خدمات و دسته‌بندی‌ها</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Admin/ManageComments">مدیریت کامنت‌ها و امتیازات</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/Account/Login">ورود</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Account/Register">ثبت‌نام</a>
-                </li>
-            </ul>
+    <!-- بخش بالای هدر شروع -->
+    <div class="header_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="call_text"><a href="#"><img src="~/images/map-icon.png"><span class="call_text_left">موقعیت‌ها</span></a></div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="call_text"><a href="#"><img src="~/images/call-icon.png"><span class="call_text_left">+01 1234567890</span></a></div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="call_text"><a href="#"><img src="~/images/mail-icon.png"><span class="call_text_left">Demo@gmail.com</span></a></div>
+                </div>
+            </div>
         </div>
-    </nav>
-
-    <div class="container body-content">
+    </div>
+    <!-- بخش بالای هدر پایان -->
+    <!-- بخش هدر شروع -->
+    <div class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo"><a href="~/"><img src="~/images/logo.png" alt="خانه‌باز"></a><span style="font-size: 24px; margin-left: 10px;">خانه‌باز</span></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/about">درباره ما</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            دسته‌بندی خدمات
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <a class="dropdown-item" href="#">نظافت منزل</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">تعمیرات خانه</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">خدمات برقی</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">خدمات لوله‌کشی</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">خدمات باغبانی</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/customer">مشتریان</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/news">اخبار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/contact">تماس با ما</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><img src="~/images/search-icon.png"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- بخش هدر پایان -->
+    <!-- بخش اصلی محتوا -->
+    <div class="container">
+        <!-- این قسمت برای محتوای اصلی صفحات مختلف استفاده می‌شود -->
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - خدمات منزل</p>
-        </footer>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js"></script>
+    <!-- بخش فوتر شروع -->
+    <div class="footer_section">
+        <div class="container">
+            <div class="footer_logo"><a href="~/"><img src="~/images/footer-logo.png" alt="خانه‌باز"></a></div>
+            <div class="input_bt">
+                <input type="text" class="mail_bt" placeholder="ایمیل خود را وارد کنید" name="email">
+                <span class="subscribe_bt" id="basic-addon2"><a href="#">اشتراک</a></span>
+            </div>
+            <div class="footer_menu">
+                <ul>
+                    <li><a href="~/">خانه</a></li>
+                    <li><a href="~/about">درباره ما</a></li>
+                    <li><a href="~/services">خدمات</a></li>
+                    <li><a href="~/customer">مشتریان</a></li>
+                    <li><a href="~/news">اخبار</a></li>
+                    <li><a href="~/contact">تماس با ما</a></li>
+                </ul>
+            </div>
+            <div class="location_main">کمپانی، لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</div>
+        </div>
+    </div>
+    <!-- بخش فوتر پایان -->
+    <!-- اسکریپت‌های جاوا -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery-3.0.0.min.js"></script>
+    <script src="~/js/plugin.js"></script>
+    <!-- منو -->
+    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <!-- اسکرول جغد -->
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+            $(".zoom").hover(function () {
+                $(this).addClass('transition');
+            }, function () {
+                $(this).removeClass('transition');
+            });
+        });
+    </script>
 </body>
 </html>

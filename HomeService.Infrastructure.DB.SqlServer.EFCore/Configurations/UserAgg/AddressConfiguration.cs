@@ -31,7 +31,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.UserAgg
             builder.HasOne(a => a.User)
                 .WithMany(u => u.Addresses)
                 .HasForeignKey(a => a.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

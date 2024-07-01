@@ -17,7 +17,11 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.ServiceA
 
             builder.Property(ss => ss.ServiceSugesstionDate)
                 .IsRequired();
-                
+
+            builder.Property(ss => ss.ServiceSugesstionPrice)
+            .IsRequired()
+            .HasColumnType("decimal(18, 2)");
+
 
             builder.HasOne(ss => ss.ServiceRequest)
                 .WithMany(sr => sr.ServiceSugesstions)

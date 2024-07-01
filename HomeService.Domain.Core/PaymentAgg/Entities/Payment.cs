@@ -24,6 +24,6 @@ namespace HomeService.Domain.Core.PaymentAgg.Entities
         public int PaymentStatusId { get; set; }
         public PaymentStatus PaymentStatus { get; set; }
 
-        public Invoice Invoice { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
     }
 }

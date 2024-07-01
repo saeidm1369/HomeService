@@ -19,15 +19,10 @@ builder.Services.AddControllersWithViews();
 // Add custom services and repositories
 builder.Services.AddProjectServices(builder.Configuration);
 
-// Add other services like Identity, Authentication, etc.
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
-
 // Load configuration from appsettings.json and appsettings.Development.json
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile($"appsettings.Development.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
