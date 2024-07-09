@@ -9,9 +9,9 @@ namespace HomeService.Domain.Core.PaymentAgg.Entities
     public class PaymentStatus
     {
         public int Id { get; set; }
-        public string StatusName { get; set; }
+        public string? StatusName { get; set; }
 
-        public ICollection<Payment> Payments { get; set; }
-        public ICollection<Invoice> Invoices { get; set; }
+        public ICollection<Payment>? Payments { get; set; }
+        public ICollection<Invoice>? Invoices { get; set; }
     }
 }

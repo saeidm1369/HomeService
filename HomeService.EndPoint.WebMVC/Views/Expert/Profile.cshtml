@@ -1,0 +1,20 @@
+﻿<!-- Views/Expert/Profile.cshtml -->
+@using HomeService.Domain.Core.UserAgg.DTOs
+@model UserDTO
+
+@{
+    ViewData["Title"] = "پروفایل کارشناس";
+    Layout = "~/Views/Expert/_ExpertLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>پروفایل کارشناس</h2>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">@Model.FullName</h5>
+            <p class="card-text">ایمیل: @Model.Email</p>
+            <p class="card-text">تلفن: @Model.PhoneNumber</p>
+        </div>
+    </div>
+    <a href="/Expert/EditProfile" class="btn btn-primary mt-3">ویرایش پروفایل</a>
+</div>

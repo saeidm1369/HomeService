@@ -10,11 +10,11 @@ namespace HomeService.Domain.Core.PaymentAgg.Entities
     public class InvoiceDetail
     {
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public decimal Amount { get; set; }
 
         public int InvoiceId { get; set; }
-        public Invoice Invoice { get; set; }
+        public Invoice? Invoice { get; set; }
 
     }
 }

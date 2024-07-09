@@ -1,0 +1,24 @@
+﻿<!-- Views/Customer/Suggestions.cshtml -->
+@using HomeService.Domain.Core.ServiceAgg.DTOs
+@model IEnumerable<ServiceSugesstionDTO>
+
+@{
+    ViewData["Title"] = "پیشنهادات خدمت";
+    Layout = "~/Views/Customer/_CustomerLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>پیشنهادات خدمت</h2>
+    <div class="list-group mt-3">
+        @foreach (var suggestion in Model)
+        {
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">@suggestion.ServiceSugesstionDescription</h5>
+                    <small>@suggestion.ServiceSugesstionPrice تومان</small>
+                </div>
+                <p class="mb-1">کارشناس: @suggestion.Expert</p>
+            </a>
+        }
+    </div>
+</div>

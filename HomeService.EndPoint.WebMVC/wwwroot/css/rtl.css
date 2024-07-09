@@ -1,0 +1,28 @@
+﻿body {
+    direction: rtl;
+    text-align: right;
+}
+
+.navbar-brand h2 {
+    float: right;
+}
+
+.navbar-nav .nav-item .nav-link {
+    float: right;
+}
+
+.breadcrumb-item {
+    float: right;
+}
+
+.breadcrumb {
+    justify-content: flex-end;
+}
+
+.service-item .service-icon {
+    float: right;
+}
+
+.testimonial-item .testimonial-text {
+    text-align: right;
+}

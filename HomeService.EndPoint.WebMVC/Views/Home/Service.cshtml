@@ -1,0 +1,23 @@
+﻿<!-- Views/Home/Service.cshtml -->
+@{
+    ViewData["Title"] = "دسته‌بندی خدمات";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">دسته‌بندی خدمات</h2>
+    <div class="row">
+        <!-- تکرار برای هر دسته‌بندی -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="~/images/category1.jpg" class="card-img-top" alt="Category 1">
+                <div class="card-body">
+                    <h5 class="card-title">دسته‌بندی ۱</h5>
+                    <p class="card-text">توضیحات کوتاه در مورد دسته‌بندی ۱</p>
+                    <a href="/Service/Category/1" class="btn btn-primary">مشاهده خدمات</a>
+                </div>
+            </div>
+        </div>
+        <!-- تکرار تا اینجا -->
+    </div>
+</div>

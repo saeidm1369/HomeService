@@ -1,5 +1,6 @@
 using HomeService.EndPoint.WebMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace HomeService.EndPoint.WebMVC.Controllers
@@ -15,11 +16,25 @@ namespace HomeService.EndPoint.WebMVC.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("???? ???? ?????? ??.");
+            return View();
+        }
+        public IActionResult Service()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("???? ???? ????? ?????? ??.");
             return View();
         }
 

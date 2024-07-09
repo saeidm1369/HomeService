@@ -4,11 +4,11 @@ namespace HomeService.EndPoint.WebMVC.Models
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "ایمیل الزامی است.")]
-        [EmailAddress(ErrorMessage = "فرمت ایمیل صحیح نیست.")]
+        [Required(ErrorMessage = "وارد کردن ایمیل الزامی است.")]
+        [EmailAddress(ErrorMessage = "ایمیل وارد شده معتبر نمی‌باشد.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "رمز عبور الزامی است.")]
+        [Required(ErrorMessage = "وارد کردن رمز عبور الزامی است.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

@@ -1,33 +1,20 @@
-﻿@{
-    ViewData["Title"] = "مدیریت کامنت‌ها و امتیازات";
+﻿<!-- Views/Admin/ManageComments.cshtml -->
+@{
+    Layout = "_AdminLayout";
 }
 
-<h2>مدیریت کامنت‌ها و امتیازات</h2>
-
-<table class="table table-striped">
-    <thead>
+<h2 class="text-center mb-4">مدیریت نظرات</h2>
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
         <tr>
-            <th>کاربر</th>
-            <th>کارشناس</th>
-            <th>رتبه</th>
+            <th>شناسه</th>
+            <th>نام کاربر</th>
             <th>نظر</th>
             <th>تاریخ</th>
-            <th>عملیات</th>
+            <th>اقدامات</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var review in Model.Reviews)
-        {
-            <tr>
-                <td>@review.User.FullName</td>
-                <td>@review.Expert.FullName</td>
-                <td>@review.Rating</td>
-                <td>@review.Comment</td>
-                <td>@review.ReviewDate.ToShortDateString()</td>
-                <td>
-                    <a class="btn btn-danger" asp-action="DeleteComment" asp-route-id="@review.Id">حذف</a>
-                </td>
-            </tr>
-        }
+        <!-- محتوای جدول -->
     </tbody>
 </table>

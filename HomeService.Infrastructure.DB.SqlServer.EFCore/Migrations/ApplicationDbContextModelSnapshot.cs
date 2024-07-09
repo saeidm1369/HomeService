@@ -45,7 +45,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -56,7 +55,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Invoices");
+                    b.ToTable("Invoices", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.PaymentAgg.Entities.InvoiceDetail", b =>
@@ -82,7 +81,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("InvoiceId");
 
-                    b.ToTable("InvoiceDetails");
+                    b.ToTable("InvoiceDetails", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.PaymentAgg.Entities.Payment", b =>
@@ -110,7 +109,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -121,7 +119,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.PaymentAgg.Entities.PaymentStatus", b =>
@@ -139,7 +137,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentStatuses");
+                    b.ToTable("PaymentStatuses", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.ExpertSkill", b =>
@@ -151,7 +149,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ExpertId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("SkillId")
@@ -163,7 +160,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("ExpertSkills");
+                    b.ToTable("ExpertSkills", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.Review", b =>
@@ -175,12 +172,10 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("ExpertId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Rating")
@@ -193,7 +188,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -206,7 +200,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.Service", b =>
@@ -218,7 +212,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -237,7 +230,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("ServiceCategoryId");
 
-                    b.ToTable("Services");
+                    b.ToTable("Services", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.ServiceCategory", b =>
@@ -255,7 +248,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServiceCategories");
+                    b.ToTable("ServiceCategories", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.ServiceImage", b =>
@@ -278,7 +271,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("ServiceImages");
+                    b.ToTable("ServiceImages", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.ServiceRequest", b =>
@@ -290,7 +283,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -304,7 +296,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -315,7 +306,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ServiceRequests");
+                    b.ToTable("ServiceRequests", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.ServiceRequestImage", b =>
@@ -338,7 +329,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("ServiceRequestId");
 
-                    b.ToTable("ServiceRequestImages");
+                    b.ToTable("ServiceRequestImages", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.ServiceRequestStatus", b =>
@@ -356,7 +347,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServiceRequestStatuses");
+                    b.ToTable("ServiceRequestStatuses", (string)null);
 
                     b.HasData(
                         new
@@ -395,7 +386,6 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ExpertId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ServiceRequestId")
@@ -413,7 +403,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasIndex("ServiceRequestId");
 
-                    b.ToTable("ServiceSugesstions");
+                    b.ToTable("ServiceSugesstions", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.ServiceAgg.Entities.Skill", b =>
@@ -431,7 +421,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skills", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.UserAgg.Entities.Address", b =>
@@ -458,14 +448,13 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.UserAgg.Entities.ProfileImage", b =>
@@ -482,15 +471,15 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
-                    b.ToTable("ProfileImages");
+                    b.ToTable("ProfileImages", (string)null);
                 });
 
             modelBuilder.Entity("HomeService.Domain.Core.UserAgg.Entities.User", b =>
@@ -727,8 +716,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "User")
                         .WithMany("Invoices")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Payment");
 
@@ -765,8 +753,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "User")
                         .WithMany("Payments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("PaymentStatus");
 
@@ -780,8 +767,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "User")
                         .WithMany("ExpertSkills")
                         .HasForeignKey("ExpertId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HomeService.Domain.Core.ServiceAgg.Entities.Skill", "Skill")
                         .WithMany("ExpertSkills")
@@ -799,8 +785,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "Expert")
                         .WithMany("ExpertReviews")
                         .HasForeignKey("ExpertId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HomeService.Domain.Core.ServiceAgg.Entities.Service", "service")
                         .WithMany()
@@ -817,8 +802,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "User")
                         .WithMany("Reviews")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Expert");
 
@@ -868,8 +852,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "User")
                         .WithMany("ServiceRequests")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Service");
 
@@ -894,8 +877,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "Expert")
                         .WithMany("ServiceSugesstions")
                         .HasForeignKey("ExpertId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HomeService.Domain.Core.ServiceAgg.Entities.ServiceRequest", "ServiceRequest")
                         .WithMany("ServiceSugesstions")
@@ -913,8 +895,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "User")
                         .WithMany("Addresses")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("User");
                 });
@@ -923,9 +904,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
                 {
                     b.HasOne("HomeService.Domain.Core.UserAgg.Entities.User", "User")
                         .WithOne("ProfileImage")
-                        .HasForeignKey("HomeService.Domain.Core.UserAgg.Entities.ProfileImage", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HomeService.Domain.Core.UserAgg.Entities.ProfileImage", "UserId");
 
                     b.Navigation("User");
                 });
@@ -1043,8 +1022,7 @@ namespace HomeService.Infrastructure.DB.SqlServer.EFCore.Migrations
 
                     b.Navigation("Payments");
 
-                    b.Navigation("ProfileImage")
-                        .IsRequired();
+                    b.Navigation("ProfileImage");
 
                     b.Navigation("Reviews");
 

@@ -19,9 +19,19 @@ namespace HomeService.Infrastructure.DataAccess.Repository.EFCore.Repositories.U
             _context = context;
         }
 
+        public Task<User> DeleteAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<User> GetByFullNameAsync(string fullName)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.FullName == fullName);
+        }
+
+        public async Task<User> GetByIdAsync(string id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
     }
 }

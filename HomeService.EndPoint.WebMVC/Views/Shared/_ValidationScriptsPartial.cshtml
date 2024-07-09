@@ -1,2 +1,15 @@
-﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $.validator.messages = {
+            required: "این فیلد الزامی است.",
+            email: "لطفا یک ایمیل معتبر وارد کنید.",
+            equalTo: "لطفا مقدار مشابه وارد کنید.",
+            minlength: $.validator.format("لطفا حداقل {0} کاراکتر وارد کنید.")
+        };
+    </script>
+}

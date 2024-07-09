@@ -4,6 +4,7 @@ using HomeService.Domain.Core.UserAgg.Entities;
 using HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.PaymentAgg;
 using HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.ServiceAgg;
 using HomeService.Infrastructure.DB.SqlServer.EFCore.Configurations.UserAgg;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -9,9 +9,9 @@ namespace HomeService.Domain.Core.ServiceAgg.Entities
     public class ServiceRequestImage
     {
         public int Id { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         public int ServiceRequestId { get; set; }
-        public ServiceRequest ServiceRequest { get; set; }
+        public ServiceRequest? ServiceRequest { get; set; }
     }
 }

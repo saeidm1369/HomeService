@@ -1,0 +1,40 @@
+﻿@model HomeService.Domain.Core.ServiceAgg.DTOs.ReviewDTO
+
+@{
+    ViewData["Title"] = "حذف کامنت";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h1>حذف کامنت</h1>
+
+<h3>آیا مطمئن هستید که می‌خواهید این کامنت را حذف کنید؟</h3>
+<div>
+    <h4>@Model.Comment</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            کاربر
+        </dt>
+        <dd class="col-sm-10">
+            @Model.User.FullName
+        </dd>
+        <dt class="col-sm-2">
+            امتیاز
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Rating
+        </dd>
+        <dt class="col-sm-2">
+            تاریخ
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ReviewDate.ToString("yyyy/MM/dd")
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteCommentConfirmed">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="ManageComments" class="btn btn-secondary">انصراف</a>
+    </form>
+</div>

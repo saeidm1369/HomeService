@@ -1,0 +1,23 @@
+﻿<!-- Views/Expert/SendProposal.cshtml -->
+@using HomeService.Domain.Core.ServiceAgg.DTOs
+@model ServiceSugesstionDTO
+
+@{
+    ViewData["Title"] = "ارسال پیشنهاد";
+    Layout = "~/Views/Expert/_ExpertLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>ارسال پیشنهاد</h2>
+    <form asp-action="SendProposal" method="post">
+        <div class="mb-3">
+            <label for="ServiceSugesstionPrice" class="form-label">قیمت پیشنهاد</label>
+            <input type="number" class="form-control" id="ServiceSugesstionPrice" name="ServiceSugesstionPrice" value="@Model.ServiceSugesstionPrice">
+        </div>
+        <div class="mb-3">
+            <label for="ServiceSugesstionDescription" class="form-label">توضیحات پیشنهاد</label>
+            <textarea class="form-control" id="ServiceSugesstionDescription" name="ServiceSugesstionDescription">@Model.ServiceSugesstionDescription</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">ارسال پیشنهاد</button>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+﻿<!-- Views/Customer/Profile.cshtml -->
+@using HomeService.Domain.Core.UserAgg.DTOs
+@model UserDTO
+
+@{
+    ViewData["Title"] = "پروفایل مشتری";
+    Layout = "~/Views/Customer/_CustomerLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>پروفایل مشتری</h2>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">@Model.FullName</h5>
+            <p class="card-text">ایمیل: @Model.Email</p>
+            <p class="card-text">تلفن: @Model.PhoneNumber</p>
+        </div>
+    </div>
+</div>

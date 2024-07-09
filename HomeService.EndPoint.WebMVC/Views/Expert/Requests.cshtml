@@ -1,0 +1,27 @@
+﻿<!-- Views/Expert/Requests.cshtml -->
+@using HomeService.Domain.Core.ServiceAgg.DTOs
+@model IEnumerable<ServiceRequestDTO>
+
+@{
+    ViewData["Title"] = "درخواست‌ها";
+    Layout = "~/Views/Expert/_ExpertLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>درخواست‌های مرتبط با تخصص‌ها</h2>
+    <div class="row mt-3">
+        @foreach (var request in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@request.RequestDate</h5>
+                        <p class="card-text">@request.Description</p>
+                        <a href="/Expert/SendProposal?requestId=@request.Id" class="btn btn-primary">ارسال پیشنهاد</a>
+                        <a href="/Expert/CompleteRequest?requestId=@request.Id" class="btn btn-success mt-2">تکمیل درخواست</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

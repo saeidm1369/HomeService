@@ -1,44 +1,60 @@
-﻿@model HomeService.EndPoint.WebMVC.Models.RegisterViewModel
-
+﻿@model RegisterViewModel
 @{
-    ViewData["Title"] = "ثبت‌نام";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "_AuthLayout";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header text-center">
-                    ثبت‌نام
-                </div>
-                <div class="card-body">
-                    <form method="post">
-                        <div class="form-group">
-                            <label for="Email">ایمیل</label>
-                            <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required>
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="Password">رمز عبور</label>
-                            <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" required>
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="ConfirmPassword">تایید رمز عبور</label>
-                            <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword" required>
-                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100 mt-4">ثبت‌نام</button>
-                    </form>
-                    <div class="text-center mt-3">
-                        <a href="/Auth/Login">حساب کاربری دارید؟ ورود</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<h2 class="text-center mb-4">ثبت نام</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SuccessMessage"]
     </div>
-</div>
+    <script>
+        setTimeout(function () {
+            window.location.href = '/Auth/Login';
+        }, 2000);
+    </script>
+}
+
+@if (ViewData.ModelState.Count > 0)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<form asp-action="Register" method="post" novalidate>
+    <div class="mb-3">
+        <label for="Email" class="form-label">ایمیل</label>
+        <input type="email" class="form-control" id="Email" name="Email" required>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Password" class="form-label">رمز عبور</label>
+        <input type="password" class="form-control" id="Password" name="Password" required>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="ConfirmPassword" class="form-label">تایید رمز عبور</label>
+        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required>
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="IsExpert" class="form-label">نوع کاربر</label>
+        <select class="form-select" id="IsExpert" name="IsExpert">
+            <option value="false">مشتری</option>
+            <option value="true">کارشناس</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">ثبت نام</button>
+</form>
+<p class="text-center mt-3">حساب کاربری دارید؟ <a href="/Auth/Login">ورود</a></p>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -3,6 +3,7 @@ using HomeService.Domain.Core.PaymentAgg.Services;
 using HomeService.Domain.Core.ServiceAgg.Data;
 using HomeService.Domain.Core.ServiceAgg.Services;
 using HomeService.Domain.Core.UserAgg.Data;
+using HomeService.Domain.Core.UserAgg.Entities;
 using HomeService.Domain.Core.UserAgg.Services;
 using HomeService.Domain.Services.PaymentAgg;
 using HomeService.Domain.Services.ServiceAgg;
@@ -29,12 +30,23 @@ namespace HomeService.EndPoint.WebMVC
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             // Add Identity services
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<User , IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequiredUniqueChars = 1;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()     
+                .AddErrorDescriber<CustomIdentityErrorDescriber>();
+
+
+
+
 
             // Add Repositories
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
@@ -92,6 +104,17 @@ namespace HomeService.EndPoint.WebMVC
 
             services.AddLogging(loggingBuilder =>
                 loggingBuilder.AddSerilog(dispose: true));
+            // Add Session
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            // Add HttpContext
+            services.AddHttpContextAccessor();
+
+
 
             return services;
 

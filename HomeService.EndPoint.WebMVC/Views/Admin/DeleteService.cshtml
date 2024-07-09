@@ -1,0 +1,40 @@
+﻿@model HomeService.Domain.Core.ServiceAgg.DTOs.ServiceDTO
+
+@{
+    ViewData["Title"] = "حذف خدمت";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h1>حذف خدمت</h1>
+
+<h3>آیا مطمئن هستید که می‌خواهید این خدمت را حذف کنید؟</h3>
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            توضیحات
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            قیمت
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Price
+        </dd>
+        <dt class="col-sm-2">
+            دسته‌بندی
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ServiceCategory.Name
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteServiceConfirmed">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="ManageServices" class="btn btn-secondary">انصراف</a>
+    </form>
+</div>

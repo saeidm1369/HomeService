@@ -1,0 +1,72 @@
+﻿<!-- Views/Admin/_AdminLayout.cshtml -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>همیار منزل - مدیریت</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+        }
+
+        nav .navbar-brand {
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <header class="text-white p-3">
+        <div class="container">
+            <h1 class="text-center">مدیریت همیار منزل</h1>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">همیار منزل</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Index">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/ManageRequests">مدیریت درخواست‌ها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/ManageServices">مدیریت خدمات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/ManageComments">مدیریت نظرات</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        @RenderBody()
+    </main>
+
+    <footer class="text-white text-center p-3 mt-4">
+        <div class="container">
+            <p>&copy; 2024 همیار منزل. تمامی حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

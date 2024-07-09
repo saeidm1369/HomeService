@@ -11,10 +11,10 @@ namespace HomeService.Domain.Core.ServiceAgg.Entities
     {
         public int Id { get; set; }
 
-        public string ExpertId { get; set; }
-        public User User { get; set; }
+        public string? ExpertId { get; set; }
+        public User? User { get; set; }
 
         public int SkillId { get; set; }
-        public Skill Skill { get; set; }
+        public Skill? Skill { get; set; }
     }
 }

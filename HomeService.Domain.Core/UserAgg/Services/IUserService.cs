@@ -10,10 +10,10 @@ namespace HomeService.Domain.Core.UserAgg.Services
 {
     public interface IUserService
     {
-        Task<UserDTO> GetUserByIdAsync(int id);
+        Task<UserDTO> GetUserByIdAsync(string id);
         Task<IEnumerable<UserDTO>> GetAllUsersAsync();
         Task<UserDTO> CreateUserAsync(UserDTO userDto);
-        Task<UserDTO> UpdateUserAsync(int id);
-        Task<bool> DeleteUserAsync(int id);
+        Task<UserDTO> UpdateUserAsync(string id);
+        Task<bool> DeleteUserAsync(string id);
     }
 }

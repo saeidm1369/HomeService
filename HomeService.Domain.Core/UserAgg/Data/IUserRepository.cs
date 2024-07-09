@@ -11,6 +11,8 @@ namespace HomeService.Domain.Core.UserAgg.Data
     public interface IUserRepository : IRepository<User>
     {
         Task<User> GetByFullNameAsync(string fullName);
+        Task<User> GetByIdAsync(string id);
+        Task<User> DeleteAsync(string id);
         
     }
 }

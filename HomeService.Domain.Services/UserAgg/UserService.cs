@@ -28,7 +28,7 @@ namespace HomeService.Domain.Services.UserAgg
             _logger = logger;
         }
 
-        public async Task<UserDTO> GetUserByIdAsync(int id)
+        public async Task<UserDTO> GetUserByIdAsync(string id)
         {
             var cacheKey = $"User_{id}";
             if (!_cache.TryGetValue(cacheKey, out UserDTO userDto))
@@ -65,7 +65,7 @@ namespace HomeService.Domain.Services.UserAgg
             return _mapper.Map<UserDTO>(user);
         }
 
-        public async Task<UserDTO> UpdateUserAsync(int id)
+        public async Task<UserDTO> UpdateUserAsync(string id)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
@@ -82,7 +82,7 @@ namespace HomeService.Domain.Services.UserAgg
             return _mapper.Map<UserDTO>(user);
         }
 
-        public async Task<bool> DeleteUserAsync(int id)
+        public async Task<bool> DeleteUserAsync(string id)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)

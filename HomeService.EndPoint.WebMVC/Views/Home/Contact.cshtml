@@ -1,0 +1,40 @@
+﻿<!-- Views/Home/Contact.cshtml -->
+@{
+    ViewData["Title"] = "تماس با ما";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">تماس با ما</h2>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">اطلاعات تماس</h5>
+                    <p class="card-text">ایمیل: info@homeservice.com</p>
+                    <p class="card-text">تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">فرم تماس با ما</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">نام</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">پیام</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">ارسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

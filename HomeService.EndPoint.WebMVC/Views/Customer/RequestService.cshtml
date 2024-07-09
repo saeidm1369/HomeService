@@ -1,0 +1,20 @@
+﻿<!-- Views/Customer/RequestService.cshtml -->
+@using HomeService.Domain.Core.ServiceAgg.DTOs
+@model ServiceRequestDTO
+
+@{
+    ViewData["Title"] = "درخواست خدمت";
+    Layout = "~/Views/Customer/_CustomerLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>درخواست خدمت</h2>
+    <form method="post" asp-action="RequestService">
+        <div class="form-group">
+            <label for="Description">توضیحات</label>
+            <textarea class="form-control" id="Description" name="Description" rows="3" required></textarea>
+        </div>
+        <input type="hidden" name="ServiceId" value="@ViewBag.ServiceId" />
+        <button type="submit" class="btn btn-primary mt-3">ارسال درخواست</button>
+    </form>
+</div>

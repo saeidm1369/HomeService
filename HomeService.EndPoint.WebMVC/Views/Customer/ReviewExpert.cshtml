@@ -1,0 +1,25 @@
+﻿<!-- Views/Customer/ReviewExpert.cshtml -->
+@using HomeService.Domain.Core.ServiceAgg.DTOs
+@model ReviewDTO
+
+@{
+    ViewData["Title"] = "ثبت نظر";
+    Layout = "~/Views/Customer/_CustomerLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>ثبت نظر</h2>
+    <form method="post" asp-action="ReviewExpert">
+        <div class="form-group">
+            <label for="Rating">امتیاز</label>
+            <input type="number" class="form-control" id="Rating" name="Rating" min="1" max="5" required />
+        </div>
+        <div class="form-group">
+            <label for="Comment">نظر</label>
+            <textarea class="form-control" id="Comment" name="Comment" rows="3" required></textarea>
+        </div>
+        <input type="hidden" name="ExpertId" value="@ViewBag.ExpertId" />
+        <button type="submit" class="btn btn-primary mt-3">ثبت نظر</button>
+    </form>
+</div>
+

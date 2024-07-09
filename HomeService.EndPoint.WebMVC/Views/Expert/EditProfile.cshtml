@@ -1,0 +1,27 @@
+﻿<!-- Views/Expert/EditProfile.cshtml -->
+@using HomeService.Domain.Core.UserAgg.DTOs
+@model UserDTO
+
+@{
+    ViewData["Title"] = "ویرایش پروفایل";
+    Layout = "~/Views/Expert/_ExpertLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>ویرایش پروفایل</h2>
+    <form asp-action="EditProfile" method="post">
+        <div class="mb-3">
+            <label for="Name" class="form-label">نام</label>
+            <input type="text" class="form-control" id="Name" name="Name" value="@Model.FullName">
+        </div>
+        <div class="mb-3">
+            <label for="Email" class="form-label">ایمیل</label>
+            <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+        </div>
+        <div class="mb-3">
+            <label for="PhoneNumber" class="form-label">تلفن</label>
+            <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber">
+        </div>
+        <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+    </form>
+</div>
