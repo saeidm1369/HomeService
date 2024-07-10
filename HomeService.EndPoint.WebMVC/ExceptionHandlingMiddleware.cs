@@ -1,45 +1,36 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System.Data.SqlTypes;
 using System.Net;
-using System.Threading.Tasks;
 
-
-namespace HomeService.EndPoint.WebMVC
+public class ExceptionHandlingMiddleware
 {
+    private readonly RequestDelegate _next;
+    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
 
-
-    public class ExceptionHandlingMiddleware
+    public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
     {
-        private readonly RequestDelegate _next;
-        private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+        _next = next;
+        _logger = logger;
+    }
 
-        public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
+    public async Task InvokeAsync(HttpContext httpContext)
+    {
+        try
         {
-            _next = next;
-            _logger = logger;
+            await _next(httpContext);
         }
-
-        public async Task InvokeAsync(HttpContext httpContext)
+        catch (Exception ex)
         {
-            try
-            {
-                await _next(httpContext);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong: {ex}");
-                await HandleExceptionAsync(httpContext, ex);
-            }
+            _logger.LogError($"Something went wrong: {ex.Message}", ex);
+            await HandleExceptionAsync(httpContext, ex);
         }
+    }
 
-        private Task HandleExceptionAsync(HttpContext context, Exception exception)
-        {
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+    private Task HandleExceptionAsync(HttpContext context, Exception exception)
+    {
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            var result = new { error = exception.Message };
-            return context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(result));
-        }
+        var result = new { error = exception.Message, detail = exception.StackTrace };
+        return context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(result));
     }
 }

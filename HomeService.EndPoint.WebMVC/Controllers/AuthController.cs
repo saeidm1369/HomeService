@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,10 +49,43 @@ namespace HomeService.EndPoint.WebMVC.Controllers
                 return View(model);
             }
 
-            var cacheKey = $"Login_{model.Email}";
-            if (!_cache.TryGetValue(cacheKey, out Microsoft.AspNetCore.Identity.SignInResult result))
+            if (string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password))
             {
-                result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                _logger.LogWarning("Email or Password is null or empty.");
+                ModelState.AddModelError(string.Empty, "Email and Password are required.");
+                return View(model);
+            }
+
+            // Validate if the user exists
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                _logger.LogWarning($"No user found with email {model.Email}");
+                ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور اشتباه است.");
+                return View(model);
+            }
+
+            var cacheKey = $"Login_{model.Email}";
+            Microsoft.AspNetCore.Identity.SignInResult result = null;
+
+            if (!_cache.TryGetValue(cacheKey, out result))
+            {
+                try
+                {
+                    result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                }
+                catch (SqlNullValueException ex)
+                {
+                    _logger.LogError(ex, "SqlNullValueException occurred during sign in.");
+                    ModelState.AddModelError(string.Empty, "An error occurred while signing in. Please try again later.");
+                    return View(model);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "An error occurred while signing in.");
+                    ModelState.AddModelError(string.Empty, "An error occurred while signing in. Please try again later.");
+                    return View(model);
+                }
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions
                 {
@@ -72,6 +106,9 @@ namespace HomeService.EndPoint.WebMVC.Controllers
             ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور اشتباه است.");
             return View(model);
         }
+
+
+
 
         [HttpGet]
         public IActionResult Register()

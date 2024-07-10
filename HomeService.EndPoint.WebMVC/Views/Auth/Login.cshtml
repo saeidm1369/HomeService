@@ -41,7 +41,8 @@
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="RememberMe" name="RememberMe">
+        <input type="checkbox" class="form-check-input" id="RememberMe" name="RememberMe" value="true">
+        <input type="hidden" name="RememberMe" value="false">
         <label class="form-check-label" for="RememberMe">مرا به خاطر بسپار</label>
     </div>
     <button type="submit" class="btn btn-primary w-100">ورود</button>
