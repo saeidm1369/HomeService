@@ -1,0 +1,55 @@
+﻿@model HomeService.Domain.Core.UserAgg.DTOs.UserDTO
+
+@{
+    Layout = "_Layout";
+}
+
+<h2 class="text-center mb-4">پروفایل کاربری</h2>
+
+<form asp-action="UpdateProfile" asp-controller="Account" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            <h4>اطلاعات کاربری</h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="FullName" class="form-label">نام کامل</label>
+                <input type="text" class="form-control" id="FullName" name="FullName" value="@Model.FullName">
+            </div>
+            <div class="mb-3">
+                <label for="Email" class="form-label">ایمیل</label>
+                <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+            </div>
+            <div class="mb-3">
+                <label for="PhoneNumber" class="form-label">شماره تلفن</label>
+                <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber">
+            </div>
+            @if (Model.ProfileImage != null)
+            {
+                <div class="mb-3">
+                    <label for="ProfileImage" class="form-label">تصویر پروفایل</label>
+                    <img src="@Model.ProfileImage.ImageUrl" alt="Profile Image" class="img-thumbnail" />
+                </div>
+            }
+            <div class="mb-3">
+                <label for="ProfileImage" class="form-label">انتخاب تصویر پروفایل</label>
+                <input type="file" class="form-control" id="ProfileImage" name="ProfileImage">
+            </div>
+            <div class="mb-3">
+                <label for="Street" class="form-label">خیابان</label>
+                <input type="text" class="form-control" id="Street" name="Address.Street" value="@Model.Address?.Street">
+            </div>
+            <div class="mb-3">
+                <label for="City" class="form-label">شهر</label>
+                <input type="text" class="form-control" id="City" name="Address.City" value="@Model.Address?.City">
+            </div>
+            <div class="mb-3">
+                <label for="PostalCode" class="form-label">کد پستی</label>
+                <input type="text" class="form-control" id="PostalCode" name="Address.PostalCode" value="@Model.Address?.PostalCode">
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary">ذخیره</button>
+        </div>
+    </div>
+</form>

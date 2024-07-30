@@ -25,12 +25,22 @@
     </div>
     <div class="mb-3">
         <label for="Password" class="form-label">رمز عبور</label>
-        <input type="password" class="form-control" id="Password" name="Password" required>
+        <div class="input-group">
+            <input type="password" class="form-control" id="Password" name="Password" required>
+            <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                <i class="fa fa-eye" id="togglePasswordIcon"></i>
+            </button>
+        </div>
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label for="ConfirmPassword" class="form-label">تکرار رمز عبور</label>
-        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required>
+        <div class="input-group">
+            <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required>
+            <button type="button" class="btn btn-outline-secondary" id="toggleConfirmPassword">
+                <i class="fa fa-eye" id="toggleConfirmPasswordIcon"></i>
+            </button>
+        </div>
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
     <div class="mb-3">
@@ -47,4 +57,33 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('Password');
+            const passwordIcon = document.getElementById('togglePasswordIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.classList.remove('fa-eye');
+                passwordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.classList.remove('fa-eye-slash');
+                passwordIcon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+            const confirmPasswordInput = document.getElementById('ConfirmPassword');
+            const confirmPasswordIcon = document.getElementById('toggleConfirmPasswordIcon');
+            if (confirmPasswordInput.type === 'password') {
+                confirmPasswordInput.type = 'text';
+                confirmPasswordIcon.classList.remove('fa-eye');
+                confirmPasswordIcon.classList.add('fa-eye-slash');
+            } else {
+                confirmPasswordInput.type = 'password';
+                confirmPasswordIcon.classList.remove('fa-eye-slash');
+                confirmPasswordIcon.classList.add('fa-eye');
+            }
+        });
+    </script>
 }

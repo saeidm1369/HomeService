@@ -13,17 +13,17 @@ namespace HomeService.Domain.Core.PaymentAgg.Entities
         public int Id { get; set; }
         public decimal Amount { get; set; }
         public DateTime PaymentDate { get; set; }
-        public string? TransactionId { get; set; }
+        public string TransactionId { get; set; }
 
-        public string? UserId { get; set; }
-        public User? User { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
 
         public int ServiceRequestId { get; set; }
-        public ServiceRequest? ServiceRequest { get; set; }
+        public ServiceRequest ServiceRequest { get; set; }
 
         public int PaymentStatusId { get; set; }
-        public PaymentStatus? PaymentStatus { get; set; }
+        public PaymentStatus PaymentStatus { get; set; }
 
-        public ICollection<Invoice>? Invoices { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
     }
 }

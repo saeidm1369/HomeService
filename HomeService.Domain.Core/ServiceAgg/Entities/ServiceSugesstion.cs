@@ -14,9 +14,9 @@ namespace HomeService.Domain.Core.ServiceAgg.Entities
         public DateTime ServiceSugesstionDate { get; set; }
 
         public int ServiceRequestId { get; set; }
-        public ServiceRequest? ServiceRequest { get; set; }
+        public ServiceRequest ServiceRequest { get; set; }
 
-        public string? ExpertId { get; set; }
-        public User? Expert { get; set; }
+        public string ExpertId { get; set; }
+        public User Expert { get; set; }
     }
 }

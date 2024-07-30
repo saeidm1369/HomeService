@@ -72,7 +72,7 @@ namespace HomeService.EndPoint.WebMVC.Controllers
             {
                 try
                 {
-                    result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                    result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, false);
                 }
                 catch (SqlNullValueException ex)
                 {
@@ -106,6 +106,7 @@ namespace HomeService.EndPoint.WebMVC.Controllers
             ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور اشتباه است.");
             return View(model);
         }
+
 
 
 

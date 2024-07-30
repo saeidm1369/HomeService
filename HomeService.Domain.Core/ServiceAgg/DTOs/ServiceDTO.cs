@@ -11,7 +11,7 @@ namespace HomeService.Domain.Core.ServiceAgg.DTOs
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
         public ServiceCategoryDTO ServiceCategory { get; set; }
         public List<ServiceImageDTO> ServiceImages { get; set; }
     }

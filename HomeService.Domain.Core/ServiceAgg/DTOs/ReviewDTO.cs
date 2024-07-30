@@ -12,8 +12,8 @@ namespace HomeService.Domain.Core.ServiceAgg.DTOs
         public int Id { get; set; }
         public UserDTO User { get; set; }
         public UserDTO Expert { get; set; }
-        public int Rating { get; set; }
-        public string Comment { get; set; }
+        public int? Rating { get; set; }
+        public string? Comment { get; set; }
         public DateTime ReviewDate { get; set; }
         public bool IsApproved { get; set; }
     }

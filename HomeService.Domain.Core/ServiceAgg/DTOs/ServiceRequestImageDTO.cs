@@ -9,6 +9,6 @@ namespace HomeService.Domain.Core.ServiceAgg.DTOs
     public class ServiceRequestImageDTO
     {
         public int Id { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

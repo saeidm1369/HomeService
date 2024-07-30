@@ -3,6 +3,7 @@ using HomeService.Domain.Core.UserAgg.Data;
 using HomeService.Domain.Core.UserAgg.DTOs;
 using HomeService.Domain.Core.UserAgg.Entities;
 using HomeService.Domain.Core.UserAgg.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System;
@@ -96,6 +97,26 @@ namespace HomeService.Domain.Services.UserAgg
             _cache.Remove("AllUsers");
             _cache.Remove($"User_{id}");
             return true;
+        }
+
+        public Task<UserDTO> UpdateUserAsync(UserDTO userDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> SaveProfileImageAsync(byte[] imageBytes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> SaveProfileImageAsync(IFormFile profileImage)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IUserService.UpdateUserAsync(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
